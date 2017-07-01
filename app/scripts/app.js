@@ -15,6 +15,6 @@
    }
 
   angular
-    .module('blocitoff', ['ui.router'])
+    .module('blocitoff', ['ui.router', 'rails'])
     .config(config);
 })();

@@ -55,4 +55,14 @@ function createDirectoryRoute(directory) {
     };
 }
 
+var proxyMiddleware = require('http-proxy-middleware');
+
+var server = {
+    baseDir: baseDir,
+    routes: routes,
+    middleware: [
+      proxyMiddleware('/api', { target: 'http://localhost:3000', changeOrigin: true })
+    ]
+  };
+
 module.exports = server;
