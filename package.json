@@ -18,6 +18,8 @@
   },
   "devDependencies": {
     "connect-modrewrite": "^0.7.9",
-    "es5-shim": "^4.0.1"
+    "es5-shim": "^4.0.1",
+    "gulp": "^3.9.1",
+    "http-proxy-middleware": "^0.17.4"
   }
 }
