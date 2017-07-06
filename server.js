@@ -1,6 +1,6 @@
 var Hapi = require('hapi'),
     path = require('path'),
-    port = process.env.PORT || 3000,
+    port = process.env.PORT || 3001,
     server = new Hapi.Server(port),
     routes = {
         css: {
@@ -55,14 +55,5 @@ function createDirectoryRoute(directory) {
     };
 }
 
-var proxyMiddleware = require('http-proxy-middleware');
-
-var server = {
-    baseDir: baseDir,
-    routes: routes,
-    middleware: [
-      proxyMiddleware('/api', { target: 'http://localhost:3000', changeOrigin: true })
-    ]
-  };
 
 module.exports = server;

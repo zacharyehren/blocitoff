@@ -11,10 +11,15 @@
              url: '/',
              controller: 'HomeCtrl as home',
              templateUrl: '/templates/home.html'
+         })
+         .state('users', {
+           url: '/',
+           controller: 'UsersCtrl as users',
+           templateUrl: '/templates/users.html'
          });
    }
 
   angular
-    .module('blocitoff', ['ui.router', 'rails'])
+    .module('blocitoff', ['ui.router'])
     .config(config);
 })();
