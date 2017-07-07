@@ -1,6 +1,8 @@
 (function() {
   function UsersCtrl(ApiRequests) {
-    this.username = ApiRequests.users;
+    console.log("in controller");
+    this.users = ApiRequests;
+    console.log(ApiRequests);
   }
 
   angular

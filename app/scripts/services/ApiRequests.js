@@ -1,15 +1,22 @@
 (function(){
-  function ApiRequests($http){
-  var users = {
-            method: 'GET',
-            url: 'http://localhost:3000/api/users/',
-            headers: $httpProvider.defaults.headers.get = { 'username' : 'password' }
-        };
+  function ApiRequests($http) {
+    var ApiRequests = {};
+    var users_request = {
+              method: 'GET',
+              url: 'http://localhost:3000/api/users/',
+              headers: {
+                'username' : 'Zachary',
+                'password' : 'helloworld'
+               }
+          };
 
-        $http(users).then(function successCallback(response) {
-            ApiRequests.users = response;
-        });
-      };
+          $http(users_request).then(function successCallback(response) {
+              console.log(response.data);
+              ApiRequests.users = response.data;
+          });
+
+        return ApiRequests;
+    };
 
   angular
     .module('blocitoff')

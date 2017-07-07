@@ -13,7 +13,7 @@
              templateUrl: '/templates/home.html'
          })
          .state('users', {
-           url: '/',
+           url: '/users',
            controller: 'UsersCtrl as users',
            templateUrl: '/templates/users.html'
          });
