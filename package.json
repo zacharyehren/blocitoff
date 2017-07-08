@@ -13,7 +13,9 @@
   "author": "Bloc Inc",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "hapi": "~7.5.0",
+    "jquery": "^3.2.1",
     "path": "^0.4.9"
   },
   "devDependencies": {

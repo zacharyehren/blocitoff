@@ -1,0 +1,21 @@
+.panel-heading {
+  background-color: #5ac3ff !important;
+}
+
+.task-container {
+  width: 60%;
+  margin: auto;
+}
+
+.task-panel:nth-child(odd){
+   background: #CCC
+ }
+
+.new-task-input {
+  width: 75%;
+}
+
+.save-task {
+  width: 25%;
+  padding-bottom: 32px;
+}

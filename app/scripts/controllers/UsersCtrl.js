@@ -1,8 +1,8 @@
 (function() {
   function UsersCtrl(ApiRequests) {
     console.log("in controller");
-    this.users = ApiRequests;
-    console.log(ApiRequests);
+    this.users = ApiRequests.users;
+    console.log(ApiRequests.users);
   }
 
   angular
