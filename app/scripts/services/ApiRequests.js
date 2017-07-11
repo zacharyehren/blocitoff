@@ -22,7 +22,7 @@
                     'username' : 'Zachary',
                     'password' : 'helloworld'
                   },
-                   data: this.item
+                   data: { item: this.item }
               };
 
               $http(task_request).then(function successCallback(response) {
