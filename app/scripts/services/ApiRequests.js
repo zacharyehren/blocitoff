@@ -11,24 +11,26 @@
           };
 
           $http(users_request).then(function successCallback(response) {
-              console.log(response.data);
               ApiRequests.users = response.data;
           });
 
-        var task_request = {
-                  method: 'POST',
-                  url: 'http://localhost:3000/api/lists/6/items',
-                  headers: {
-                    'username' : 'Zachary',
-                    'password' : 'helloworld'
-                  },
-                   data: { item: this.item }
-              };
 
-              $http(task_request).then(function successCallback(response) {
-                  console.log(response.data);
-                  ApiRequests.item = response.data;
-              });
+    ApiRequests.create_task = function(task){
+      var task_request = {
+                method: 'POST',
+                url: 'http://localhost:3000/api/lists/6/items',
+                headers: {
+                  'username' : 'Zachary',
+                  'password' : 'helloworld'
+                },
+                 data: { item: { item: task } }
+            };
+
+
+            $http(task_request).then(function successCallback(response) {
+                ApiRequests.item = response.data;
+            });
+    }
 
             return ApiRequests;
         };
