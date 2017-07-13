@@ -7,7 +7,6 @@
       <input type="text" ng-model="home.task" class="panel-body new-task-input" placeholder="New Task">
       <button class="pull-right save-task" ng-click="home.create_task()">Save</button>
     </form>
-    <div class="panel-body task-panel">Panel Content</div>
-    <div class="panel-body task-panel">Panel Content</div>
+    <div class="panel-body task-panel" ng-repeat="task in home.tasks">{{ task["item"] }}</div>
   </div>
 </div>
