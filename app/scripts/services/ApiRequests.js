@@ -33,6 +33,7 @@
             });
     }
 
+    ApiRequests.list_tasks = function(){
     var task_return = {
               method: 'GET',
               url: 'http://localhost:3000/api/lists/6/items',
@@ -44,8 +45,8 @@
 
           $http(task_return).then(function successCallback(response) {
               ApiRequests.tasks = response.data;
-              console.log(ApiRequests.tasks)
           });
+    }
 
     return ApiRequests;
   };

@@ -5,8 +5,9 @@
       ApiRequests.create_task(this.task);
     }
 
-    this.tasks = ApiRequests.tasks;
-    console.log(ApiRequests.tasks);
+    this.list_tasks = function() {
+      ApiRequests.list_tasks();
+    }
   }
 
   angular
