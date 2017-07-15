@@ -12,9 +12,7 @@
 
           $http(users_request).then(function successCallback(response) {
               ApiRequests.users = response.data;
-              console.log(ApiRequests.users)
           });
-
 
     ApiRequests.create_task = function(task){
       var task_request = {
@@ -46,8 +44,8 @@
           $http(task_return).then(function successCallback(response) {
               ApiRequests.tasks = response.data;
           });
+          console.log(ApiRequests.tasks);
     }
-
     return ApiRequests;
   };
 
