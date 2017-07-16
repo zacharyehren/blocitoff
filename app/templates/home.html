@@ -1,5 +1,5 @@
 <div class="container task-container" ng-controller="HomeCtrl as home">
-
+  <h3 ng-if="user">{{ user.username }}</h3>
   <div class="panel panel-primary">
     <div class="panel-heading">Current Tasks
     </div>
