@@ -5,7 +5,9 @@
       ApiRequests.create_task(this.task);
     }
 
-    this.list_tasks = ApiRequests.list_tasks();
+    window.onload = ApiRequests.list_tasks();
+    this.list_tasks = ApiRequests.tasks;
+    console.log(ApiRequests.tasks);
 
   }
 
