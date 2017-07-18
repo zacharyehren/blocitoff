@@ -17,7 +17,7 @@
     ApiRequests.create_task = function(task){
       var task_request = {
                 method: 'POST',
-                url: 'http://localhost:3000/api/lists/6/items',
+                url: 'http://localhost:3000/api/lists/1/items',
                 headers: {
                   'username' : 'Zachary',
                   'password' : 'helloworld'
@@ -29,23 +29,21 @@
             $http(task_request).then(function successCallback(response) {
                 ApiRequests.task = response.data;
             });
-    }
+    };
 
-    ApiRequests.list_tasks = function(){
     var task_return = {
-              method: 'GET',
-              url: 'http://localhost:3000/api/lists/6/items',
-              headers: {
-                'username' : 'Zachary',
-                'password' : 'helloworld'
-               }
-          };
+        method: 'GET',
+        url: 'http://localhost:3000/api/lists/1/items',
+        headers: {
+            'username' : 'Zachary',
+            'password' : 'helloworld'
+        }
+    };
 
-          $http(task_return).then(function successCallback(response) {
-              ApiRequests.tasks = response.data;
-          });
-          console.log(ApiRequests.tasks);
-    }
+    $http(task_return).then(function successCallback(response) {
+      ApiRequests.tasks = response.data;
+    });
+
     return ApiRequests;
   };
 
