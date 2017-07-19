@@ -17,7 +17,7 @@
     ApiRequests.create_task = function(task){
       var task_request = {
                 method: 'POST',
-                url: 'http://localhost:3000/api/lists/1/items',
+                url: 'http://localhost:3000/api/lists/6/items',
                 headers: {
                   'username' : 'Zachary',
                   'password' : 'helloworld'
@@ -33,7 +33,7 @@
 
     var task_return = {
         method: 'GET',
-        url: 'http://localhost:3000/api/lists/1/items',
+        url: 'http://localhost:3000/api/lists/6/items',
         headers: {
             'username' : 'Zachary',
             'password' : 'helloworld'
