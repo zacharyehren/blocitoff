@@ -22,7 +22,7 @@
                   'username' : 'Zachary',
                   'password' : 'helloworld'
                 },
-                 data: { users: { username: username, password_digest: password } }
+                 data: { users: { username: username, password: password } }
             };
 
 
