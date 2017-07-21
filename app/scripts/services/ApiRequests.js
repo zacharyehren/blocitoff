@@ -14,6 +14,23 @@
               ApiRequests.users = response.data;
           });
 
+    ApiRequests.create_user = function(username, password){
+      var new_user = {
+                method: 'POST',
+                url: 'http://localhost:3000/api/users/',
+                headers: {
+                  'username' : 'Zachary',
+                  'password' : 'helloworld'
+                },
+                 data: { users: { username: username, password_digest: password } }
+            };
+
+
+            $http(new_user).then(function successCallback(response) {
+                ApiRequests.newUser = response.data;
+            });
+    };
+
     // ApiRequests.create_task = function(task){
     //   var task_request = {
     //             method: 'POST',

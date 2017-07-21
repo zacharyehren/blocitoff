@@ -1,4 +1,4 @@
-<section>
+<section ng-controller="UsernameModalInstanceCtrl as usernameModal">
   <h3>Sign Up For Blocitoff!</h3>
   <form class="form-horizontal">
   <div class="form-group">
@@ -15,7 +15,7 @@
   </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-    <button class="btn btn-primary" ng-click="usernameModal.setUsername()">Submit</button>
+    <button class="btn btn-primary" ng-click="usernameModal.create_user()">Submit</button>
     </div>
   </div>
 </form>
