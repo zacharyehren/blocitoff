@@ -1,22 +1,47 @@
 <section>
-  <h3>Sign Up For Blocitoff!</h3>
-  <form class="form-horizontal">
-  <div class="form-group">
-    <label class="col-sm-2 control-label">Username</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" placeholder="Username" ng-model="usernameModal.username">
+  <div id="signUp">
+    <h3>Sign Up For Blocitoff!</h3>
+    <form class="form-horizontal">
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Username</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" placeholder="Username" ng-model="usernameModal.username">
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label class="col-sm-2 control-label">Password</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" placeholder="Password" ng-model="usernameModal.password">
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Password</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" placeholder="Password" ng-model="usernameModal.password">
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-    <button class="btn btn-primary" ng-click="usernameModal.setUsername()">Submit</button>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+      <button class="btn btn-primary" ng-click="usernameModal.createUsername()">Submit</button>
+      <button class="btn btn-primary" ng-click="usernameModal.showSignIn()">Already A User?</button>
+      </div>
     </div>
   </div>
 </form>
+  <div id="signIn" style="display: none;">
+    <h3>Welcome Back!</h3>
+    <form class="form-horizontal">
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Username</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" placeholder="Username" ng-model="usernameModal.username">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Password</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" placeholder="Password" ng-model="usernameModal.password">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+      <button class="btn btn-primary" ng-click="usernameModal.signInUser()">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
 </section>

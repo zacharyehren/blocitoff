@@ -6,7 +6,9 @@
         animation: this.animationsEnabled,
         templateUrl: 'templates/createUsernameModal.html',
         controller: 'UsernameModalInstanceCtrl',
-        controllerAs: 'usernameModal'
+        controllerAs: 'usernameModal',
+        backdrop: 'static',
+        keyboard: false
       });
 
       usernameModalInstance.result.then(

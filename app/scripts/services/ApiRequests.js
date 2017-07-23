@@ -1,18 +1,21 @@
 (function(){
   function ApiRequests($http) {
     var ApiRequests = {};
-    var users_request = {
-              method: 'GET',
-              url: 'http://localhost:3000/api/users/',
-              headers: {
-                'username' : 'Zachary',
-                'password' : 'helloworld'
-               }
-          };
+
+    ApiRequests.sign_in = function(username, password){
+      var users_request = {
+                method: 'GET',
+                url: 'http://localhost:3000/api/users/',
+                headers: {
+                  'username' : 'Zachary',
+                  'password' : 'helloworld'
+                 }
+            };
 
           $http(users_request).then(function successCallback(response) {
               ApiRequests.users = response.data;
           });
+        }
 
     ApiRequests.create_user = function(username, password){
       var new_user = {
