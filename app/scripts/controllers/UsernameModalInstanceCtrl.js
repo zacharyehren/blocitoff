@@ -21,8 +21,10 @@
       if (this.username === undefined) {
         alert("You didn't enter a username!");
       } else {
-          ApiRequests.sign_in(this.username, this.password);
-          console.log(this.username);
+          var authenticated = ApiRequests.sign_in(this.username, this.password);
+          if (authenticated) {
+            console.log("AUTHENTICATED");            
+          }
           $uibModalInstance.close(this.username);
       }
     };

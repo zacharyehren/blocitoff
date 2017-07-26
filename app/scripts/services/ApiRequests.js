@@ -4,12 +4,13 @@
 
     ApiRequests.sign_in = function(username, password){
       var users_request = {
-                method: 'GET',
-                url: 'http://localhost:3000/api/users/',
+                method: 'POST',
+                url: 'http://localhost:3000/api/users/authenticate',
                 headers: {
                   'username' : 'Zachary',
                   'password' : 'helloworld'
-                 }
+                },
+                data: { username: username, password: password }
             };
 
           $http(users_request).then(function successCallback(response) {
