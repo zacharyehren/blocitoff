@@ -1,14 +1,7 @@
 <div class="container task-container">
-  <div class="panel panel-primary">
-    <div class="panel-heading">Current Tasks
-    </div>
-    <form>
-      <input type="text" ng-model="home.task" class="panel-body new-task-input" placeholder="New Task">
-      <button class="pull-right save-task" ng-click="home.create_task()">Save</button>
-    </form>
+    <div>All Lists</div>
 
-    <div class="panel-body task-panel" ng-repeat="task in home.ApiRequests.tasks">
-      {{ task['item'] }}
-    </div>
-  </div>
+    <h3 ng-repeat="list in home.ApiRequests.lists">
+      {{ list["name"] }}
+    </h3>
 </div>

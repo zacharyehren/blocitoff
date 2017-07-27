@@ -35,6 +35,19 @@
             });
     };
 
+    var display_lists = {
+             method: 'GET',
+             url: 'http://localhost:3000/api/users/10/lists',
+             headers: {
+               'username' : 'Zachary',
+               'password' : 'helloworld'
+              }
+         };
+
+         $http(display_lists).then(function successCallback(response) {
+             ApiRequests.lists = response.data;
+         });
+
     // ApiRequests.create_task = function(task){
     //   var task_request = {
     //             method: 'POST',

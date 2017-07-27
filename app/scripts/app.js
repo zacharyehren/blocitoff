@@ -16,6 +16,11 @@
            url: '/users',
            controller: 'UsersCtrl as users',
            templateUrl: '/templates/users.html'
+         })
+         .state('list', {
+           url: '/list',
+           controller: 'ListCtrl as list',
+           templateUrl: '/templates/list.html'
          });
    }
 

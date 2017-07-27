@@ -1,0 +1,14 @@
+<div class="container task-container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">Current Tasks
+    </div>
+    <form>
+      <input type="text" ng-model="list.task" class="panel-body new-task-input" placeholder="New Task">
+      <button class="pull-right save-task" ng-click="list.create_task()">Save</button>
+    </form>
+
+    <div class="panel-body task-panel" ng-repeat="task in list.ApiRequests.tasks">
+      {{ task['item'] }}
+    </div>
+  </div>
+</div>

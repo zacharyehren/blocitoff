@@ -1,11 +1,9 @@
 (function() {
   function HomeCtrl(ApiRequests) {
-    this.ApiRequests = ApiRequests;
-
-    this.create_task = function() {
-      ApiRequests.create_task(this.task);
+      this.lists = ApiRequests;
+      //I also tried   this.lists = ApiRequests.lists;  but that didn't work either
     }
-  }
+
 
   angular
   .module('blocitoff')
