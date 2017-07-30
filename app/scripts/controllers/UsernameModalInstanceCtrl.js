@@ -11,7 +11,6 @@
         alert("You didn't enter a username!");
       } else {
           ApiRequests.create_user(this.username, this.password);
-          console.log(this.username);
           $uibModalInstance.close(this.username);
 
       }
@@ -23,7 +22,7 @@
       } else {
           var authenticated = ApiRequests.sign_in(this.username, this.password);
           if (authenticated) {
-            console.log("AUTHENTICATED");            
+            console.log("AUTHENTICATED");
           }
           $uibModalInstance.close(this.username);
       }

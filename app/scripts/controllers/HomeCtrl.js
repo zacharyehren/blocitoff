@@ -1,6 +1,6 @@
 (function() {
   function HomeCtrl(ApiRequests) {
-      this.ApiRequests = ApiRequests;
+      this.ListRequest = ApiRequests;
 
     }
 

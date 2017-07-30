@@ -1,52 +1,86 @@
-(function(){
+(function() {
   function ApiRequests($http) {
+
     var ApiRequests = {};
+    var signed_in_user_id;
 
-    ApiRequests.sign_in = function(username, password){
+    ApiRequests.sign_in = function(username, password) {
       var users_request = {
-                method: 'POST',
-                url: 'http://localhost:3000/api/users/authenticate',
-                headers: {
-                  'username' : 'Zachary',
-                  'password' : 'helloworld'
-                },
-                data: { username: username, password: password }
-            };
-
-          $http(users_request).then(function successCallback(response) {
-              ApiRequests.users = response.data;
-          });
+        method: 'POST',
+        url: 'http://localhost:3000/api/users/authenticate',
+        headers: {
+          'username': 'Zachary',
+          'password': 'helloworld'
+        },
+        data: {
+          username: username,
+          password: password
         }
+      };
 
-    ApiRequests.create_user = function(username, password){
+      $http(users_request).then(function successCallback(response) {
+        ApiRequests.users = response.data;
+        signed_in_user_id = ApiRequests.users.id;
+      });
+    }
+
+    ApiRequests.create_user = function(username, password) {
       var new_user = {
-                method: 'POST',
-                url: 'http://localhost:3000/api/users/',
-                headers: {
-                  'username' : 'Zachary',
-                  'password' : 'helloworld'
-                },
-                 data: { users: { username: username, password: password } }
-            };
+        method: 'POST',
+        url: 'http://localhost:3000/api/users/',
+        headers: {
+          'username': 'Zachary',
+          'password': 'helloworld'
+        },
+        data: {
+          users: {
+            username: username,
+            password: password
+          }
+        }
+      };
 
 
-            $http(new_user).then(function successCallback(response) {
-                ApiRequests.newUser = response.data;
-            });
+      $http(new_user).then(function successCallback(response) {
+        ApiRequests.newUser = response.data;
+        signed_in_user_id = ApiRequests.newUser.id;
+      });
     };
 
-    var display_lists = {
-             method: 'GET',
-             url: 'http://localhost:3000/api/users/10/lists',
-             headers: {
-               'username' : 'Zachary',
-               'password' : 'helloworld'
-              }
-         };
 
-         $http(display_lists).then(function successCallback(response) {
-             ApiRequests.lists = response.data;
-         });
+    var display_lists = {
+      method: 'GET',
+      url: 'http://localhost:3000/api/users/' + signed_in_user_id + '/lists',
+      headers: {
+        'username': 'Zachary',
+        'password': 'helloworld'
+      }
+    };
+
+    $http(display_lists).then(function successCallback(response) {
+      ApiRequests.lists = response.data;
+    });
+
+    ApiRequests.create_list = function(list_name){
+      var list_request = {
+        method: 'POST',
+        url: 'http://localhost:3000/api/users/' + signed_in_user_id + '/lists',
+        headers: {
+          'username' : 'Zachary',
+          'password' : 'helloworld'
+        },
+        data: {
+          lists: {
+            name: list_name
+          }
+        }
+      };
+    $http(list_request).then(function successCallback(response) {
+            ApiRequests.new_list = response.data;
+    });
+  };
+
+
 
     // ApiRequests.create_task = function(task){
     //   var task_request = {
