@@ -1,7 +1,7 @@
 (function() {
   function ListModalInstanceCtrl($uibModalInstance) {
     this.newList = function() {
-      $uibModalInstance.close(this.listName);
+      $uibModalInstance.close(this.list_name);
     };
 
     this.cancelModal = function() {

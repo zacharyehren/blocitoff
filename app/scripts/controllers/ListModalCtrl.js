@@ -10,8 +10,9 @@
       });
 
       modalInstance.result.then(
-        function(listName) {
-          ApiRequests.create_list(listName);
+        function(list_name) {
+          console.log(list_name);
+          ApiRequests.create_list(list_name);
         }
       )
     };
