@@ -21,10 +21,10 @@
         alert("You didn't enter a username!");
       } else {
           var authenticated = ApiRequests.sign_in(this.username, this.password);
+          $uibModalInstance.close(this.username);
           if (authenticated) {
             console.log("AUTHENTICATED");
           }
-          $uibModalInstance.close(this.username);
       }
     };
   }

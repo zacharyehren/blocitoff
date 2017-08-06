@@ -108,7 +108,8 @@
       });
     };
 
-    ApiRequests.task_return = function() {
+    ApiRequests.task_return = function(list_id) {
+      console.log("fired function");
       var list_tasks = {
       method: 'GET',
       url: 'http://localhost:3000/api/lists/' + list_id + '/items',

@@ -4,6 +4,6 @@
       Create List
     </div>
     <h3 ng-repeat="list in home.ListRequest.lists">
-      <a ui-sref="list" class="navbar-link">{{ list["name"] }}</a>
+      <a ui-sref="list" class="navbar-link" ng-click="home.pass_list_id(list.id)">{{ list["name"] }}</a>
     </h3>
 </div>
