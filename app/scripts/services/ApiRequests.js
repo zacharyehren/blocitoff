@@ -108,18 +108,20 @@
       });
     };
 
-    var task_return = {
+    ApiRequests.task_return = function() {
+      var list_tasks = {
       method: 'GET',
       url: 'http://localhost:3000/api/lists/' + list_id + '/items',
       headers: {
         'username': 'Zachary',
         'password': 'helloworld'
       }
-    };
+     }
 
-    $http(task_return).then(function successCallback(response) {
+    $http(list_tasks).then(function successCallback(response) {
       ApiRequests.tasks = response.data;
-    });
+     });
+    };
 
     return ApiRequests;
   };
