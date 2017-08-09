@@ -3,7 +3,7 @@
     <div class='btn btn-primary' ng-controller="ListModalCtrl as listModal" ng-click="listModal.openModal()">
       Create List
     </div>
-    <h3 ng-repeat="list in home.ListRequest.lists">
+    <h3 ng-repeat="list in home.ApiRequests.lists">
       <a ui-sref="list" class="navbar-link" ng-click="home.pass_list_id(list.id)">{{ list["name"] }}</a>
     </h3>
 </div>

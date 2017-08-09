@@ -1,5 +1,5 @@
 (function() {
-  function BlocitoffCookies($cookies, $uibModal) {
+  function BlocitoffCookies($cookies, $uibModal, ApiRequests) {
     var currentUser = $cookies.get('blocitoffCurrentUser');
     if (!currentUser || currentUser === '') {
       var usernameModalInstance = $uibModal.open({
@@ -13,7 +13,8 @@
 
       usernameModalInstance.result.then(
         function(username) {
-          $cookies.put('blocitoffCurrentUser', username, {
+          $cookies.put('blocitoffCurrentUser', username,
+          {
             expires: new Date(2020, 05, 25)
           });
           return username;
@@ -25,5 +26,5 @@
   };
   angular
     .module('blocitoff')
-    .run(['$cookies', '$uibModal', BlocitoffCookies]);
+    .run(['$cookies', '$uibModal', 'ApiRequests', BlocitoffCookies]);
 })();

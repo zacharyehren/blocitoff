@@ -36,7 +36,22 @@
           ApiRequests.lists = response.data;
         });
       });
-    }
+    };
+
+    // ApiRequests.getListsForUser = function(user) {
+    //   var display_lists = {
+    //     method: 'GET',
+    //     url: 'http://localhost:3000/api/users/' + user.id + '/lists',
+    //     headers: {
+    //       'username': 'Zachary',
+    //       'password': 'helloworld'
+    //     }
+    //   };
+    //
+    //   $http(display_lists).then(function successCallback(response) {
+    //     return response.data;
+    //   });
+    // };
 
     ApiRequests.create_user = function(username, password) {
       var new_user = {
