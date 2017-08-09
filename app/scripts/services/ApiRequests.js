@@ -4,6 +4,8 @@
     var ApiRequests = {};
     var signed_in_user_id;
     var list_id;
+    var display_lists;
+    var list_tasks;
 
     ApiRequests.sign_in = function(username, password) {
       var users_request = {
@@ -23,7 +25,7 @@
         ApiRequests.users = response.data;
         signed_in_user_id = ApiRequests.users.id;
 
-        var display_lists = {
+        display_lists = {
           method: 'GET',
           url: 'http://localhost:3000/api/users/' + signed_in_user_id + '/lists',
           headers: {
@@ -96,7 +98,10 @@
       $http(list_request).then(function successCallback(response) {
         ApiRequests.new_list = response.data;
         list_id = ApiRequests.new_list.id;
-        console.log(list_id);
+      });
+      $http(display_lists).then(function successCallback(response) {
+        ApiRequests.lists = response.data;
+        console.log(ApiRequests.lists);
       });
     };
 
@@ -117,26 +122,28 @@
         }
       };
 
-
       $http(task_request).then(function successCallback(response) {
         ApiRequests.task = response.data;
+      });
+      $http(list_tasks).then(function successCallback(response) {
+        ApiRequests.tasks = response.data;
       });
     };
 
     ApiRequests.task_return = function(list_id) {
       console.log("fired function");
-      var list_tasks = {
-      method: 'GET',
-      url: 'http://localhost:3000/api/lists/' + list_id + '/items',
-      headers: {
-        'username': 'Zachary',
-        'password': 'helloworld'
+      list_tasks = {
+        method: 'GET',
+        url: 'http://localhost:3000/api/lists/' + list_id + '/items',
+        headers: {
+          'username': 'Zachary',
+          'password': 'helloworld'
+        }
       }
-     }
 
-    $http(list_tasks).then(function successCallback(response) {
-      ApiRequests.tasks = response.data;
-     });
+      $http(list_tasks).then(function successCallback(response) {
+        ApiRequests.tasks = response.data;
+      });
     };
 
     return ApiRequests;

@@ -8,6 +8,8 @@
     // }
 
     this.create_task = function() {
+      console.log(this.task);
+      ApiRequests.task_return(list_id);
       ApiRequests.create_task(this.task);
     }
 
