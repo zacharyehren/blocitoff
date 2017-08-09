@@ -1,5 +1,5 @@
 (function() {
-  function HomeCtrl(ApiRequests) {
+  function HomeCtrl(ApiRequests, BlocitoffCookies) {
       this.ApiRequests = ApiRequests;
       // doesnt do anything yet
       //this.currentUser = BloccitoffCookies.currentUser;
@@ -11,5 +11,5 @@
 
   angular
   .module('blocitoff')
-  .controller('HomeCtrl', ['ApiRequests', HomeCtrl]);
+  .controller('HomeCtrl', ['ApiRequests', 'BlocitoffCookies', HomeCtrl]);
 })();
