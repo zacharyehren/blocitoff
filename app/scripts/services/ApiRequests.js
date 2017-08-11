@@ -145,6 +145,23 @@
       });
     };
 
+    ApiRequests.delete_list = function(list_id) {
+      list_delete = {
+        method: 'DELETE',
+        url: 'http://localhost:3000/api/' + signed_in_user_id + 'lists/' + list_id,
+        headers: {
+          'username': 'Zachary',
+          'password': 'helloworld'
+        }
+      }
+
+      $http(list_delete).then(function successCallback(response) {
+        $http(display_lists).then(function successCallback(response) {
+          ApiRequests.lists = response.data;
+        });
+      });
+    };
+
     return ApiRequests;
   };
 

@@ -8,8 +8,13 @@
 }
 
 .task-panel:nth-child(odd){
-   background: #CCC
+   background: #bffafc;
+   margin: 0 0 !important;
  }
+
+ .task-panel:nth-child(even){
+    margin: 0 0 !important;
+  }
 
 .new-task-input {
   width: 75%;
@@ -18,4 +23,9 @@
 .save-task {
   width: 25%;
   padding-bottom: 32px;
+}
+
+input[type=checkbox]:checked + a.navbar-link{
+  text-decoration: line-through;
+  font-style: italic;
 }
