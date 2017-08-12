@@ -107,7 +107,7 @@
 
 
 
-    ApiRequests.create_task = function(task) {
+    ApiRequests.create_task = function(task, list_id) {
       var task_request = {
         method: 'POST',
         url: 'http://localhost:3000/api/lists/' + list_id + '/items',

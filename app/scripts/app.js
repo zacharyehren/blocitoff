@@ -1,5 +1,5 @@
 (function() {
-  function config($locationProvider, $stateProvider) {
+  function config($locationProvider, $stateProvider, $routeProvider) {
      $locationProvider
          .html5Mode({
              enabled: true,
@@ -22,9 +22,17 @@
            controller: 'ListCtrl as list',
            templateUrl: '/templates/list.html'
          });
+
+      $routeProvider
+        .when('/lists/:id', {
+          templateUrl: '/templates/list.html',
+          controller: 'ListCtrl as list'
+        });
+
+
    }
 
   angular
-    .module('blocitoff', ['ui.router', 'ui.bootstrap', 'ngCookies'])
+    .module('blocitoff', ['ui.router', 'ui.bootstrap', 'ngCookies', 'ngRoute'])
     .config(config);
 })();
