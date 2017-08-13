@@ -21,6 +21,7 @@
 
       $http(users_request).then(function successCallback(response) {
         ApiRequests.users = response.data;
+        console.log(ApiRequests.users);
         signed_in_user_id = ApiRequests.users.id;
 
         var display_lists = {

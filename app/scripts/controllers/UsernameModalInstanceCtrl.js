@@ -21,7 +21,8 @@
         alert("You didn't enter a username!");
       } else {
           var authenticated = ApiRequests.sign_in(this.username, this.password);
-          $uibModalInstance.close(this.username);
+          console.log(ApiRequests.users);
+          $uibModalInstance.close(ApiRequests.users);
           if (authenticated) {
             console.log("AUTHENTICATED");
           }
