@@ -25,7 +25,6 @@
 
       $routeProvider
         .when('/lists/:id', {
-          templateUrl: '/templates/list.html',
           controller: 'ListCtrl as list'
         });
 

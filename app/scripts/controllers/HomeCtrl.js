@@ -10,11 +10,11 @@
       }
 
 
-      this.delete_list = function(list_id) {
-        var lists_length = ApiRequests.lists.length;
-        while (lists_length --) {
-          if (document.getElementById("list_checkbox").checked = true) {
-            console.log(list_id);
+      this.delete_list = function() {
+        var lists = ApiRequests.lists;
+        for (var i = 0; i <= lists.length; i++) {
+          if (document.getElementById("list_checkbox").checked) {
+            console.log("test");
             // ApiRequests.delete_list(list_id);
           }
         }

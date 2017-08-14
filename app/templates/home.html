@@ -5,11 +5,11 @@
       <div class='btn btn-primary' ng-controller="ListModalCtrl as listModal" ng-click="listModal.openModal()">
         Create List
       </div>
-      <div class='btn btn-danger' ng-click="home.delete_list(list.id)">Delete List
+      <div class='btn btn-danger' ng-click="home.delete_list()">Delete List
       </div>
     </div>
     <h4 ng-repeat="list in home.ApiRequests.lists" class="task-panel panel-body">
-      <input id="list_checkbox" class="form-check-input" type="checkbox" style="margin-right: 5px;" ng-model="list.id">
+      <input id="list_checkbox" class="form-check-input" type="checkbox" style="margin-right: 5px;" ng-model="list_id">
       <a ui-sref="list" class="navbar-link" ng-click="home.pass_list_id(list.id)">{{ list["name"] }}</a>
     </h4>
   </div>
