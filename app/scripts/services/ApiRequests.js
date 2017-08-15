@@ -148,7 +148,7 @@
     ApiRequests.delete_list = function(list_id) {
       list_delete = {
         method: 'DELETE',
-        url: 'http://localhost:3000/api/' + signed_in_user_id + 'lists/' + list_id,
+        url: 'http://localhost:3000/api/users/' + signed_in_user_id + '/lists/' + list_id,
         headers: {
           'username': 'Zachary',
           'password': 'helloworld'

@@ -10,14 +10,15 @@
       }
 
 
-      this.delete_list = function() {
-        var lists = ApiRequests.lists;
-        for (var i = 0; i <= lists.length; i++) {
-          if (document.getElementById("list_checkbox").checked) {
-            console.log("test");
+      this.delete_list = function(list_id) {
+        ApiRequests.delete_list(list_id);
+        // var lists = ApiRequests.lists;
+        // for (var i = 0; i <= lists.length; i++) {
+        //   if (document.getElementById("list_checkbox").checked) {
+        //     console.log($index);
             // ApiRequests.delete_list(list_id);
-          }
-        }
+          // }
+        // }
       }
     }
 
