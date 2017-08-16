@@ -5,6 +5,27 @@
     var signed_in_user_id;
     var list_id;
 
+    function setCurrentUser(user) {
+
+    }
+
+    function setLists(){
+      var display_lists = {
+        method: 'GET',
+        url: 'http://localhost:3000/api/users/' + signed_in_user_id + '/lists',
+        headers: {
+          'username': 'Zachary',
+          'password': 'helloworld'
+        }
+      };
+
+      $http(display_lists).then(function successCallback(response) {
+        ApiRequests.lists = response.data;
+      });
+    }
+
+
+
     ApiRequests.sign_in = function(username, password) {
       var users_request = {
         method: 'POST',
@@ -20,22 +41,19 @@
       };
 
       $http(users_request).then(function successCallback(response) {
-        ApiRequests.users = response.data;
-        console.log(ApiRequests.users);
-        signed_in_user_id = ApiRequests.users.id;
+        var currentuser = response.data;
 
-        var display_lists = {
-          method: 'GET',
-          url: 'http://localhost:3000/api/users/' + signed_in_user_id + '/lists',
-          headers: {
-            'username': 'Zachary',
-            'password': 'helloworld'
-          }
-        };
+        // call setCurrentUser function
+        // ApiRequests.users = response.data;
+        // console.log(ApiRequests.users);
+        // signed_in_user_id = ApiRequests.users.id;
 
-        $http(display_lists).then(function successCallback(response) {
-          ApiRequests.lists = response.data;
-        });
+
+        // call setLists
+
+        setLists()
+
+
       });
     };
 

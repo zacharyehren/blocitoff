@@ -15,6 +15,7 @@
       usernameModalInstance.result.then(
         function(user) {
           console.log(user);
+          //pass this logic to ApiRequests 
           $cookies.put('blocitoffCurrentUser', user.username,
           {
             expires: new Date(2020, 05, 25),
