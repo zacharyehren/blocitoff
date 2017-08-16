@@ -11,7 +11,6 @@
 
       modalInstance.result.then(
         function(list_name) {
-          console.log(list_name);
           ApiRequests.create_list(list_name);
         }
       )

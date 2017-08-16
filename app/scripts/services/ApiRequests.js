@@ -96,12 +96,9 @@
         }
       };
       $http(list_request).then(function successCallback(response) {
-        ApiRequests.new_list = response.data;
-        list_id = ApiRequests.new_list.id;
-      });
-      $http(display_lists).then(function successCallback(response) {
-        ApiRequests.lists = response.data;
-        console.log(ApiRequests.lists);
+        new_list = response.data;
+        list_id = new_list.id;
+        ApiRequests.lists.push(new_list);
       });
     };
 
@@ -123,10 +120,8 @@
       };
 
       $http(task_request).then(function successCallback(response) {
-        ApiRequests.task = response.data;
-      });
-      $http(list_tasks).then(function successCallback(response) {
-        ApiRequests.tasks = response.data;
+        var task = response.data;
+        ApiRequests.tasks.push(task);
       });
     };
 
@@ -142,6 +137,7 @@
 
       $http(list_tasks).then(function successCallback(response) {
         ApiRequests.tasks = response.data;
+
       });
     };
 
