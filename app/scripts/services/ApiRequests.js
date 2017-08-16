@@ -1,18 +1,19 @@
 (function() {
-  function ApiRequests($http) {
+  function ApiRequests($http, $cookies) {
 
     var ApiRequests = {};
     var signed_in_user_id;
     var list_id;
+    var currentUser;
 
-    function setCurrentUser(user) {
-
+    function setCurrentUser() {
+      console.log($cookies.get('blocitoffCurrentUser.user_id'));
     }
 
     function setLists(){
       var display_lists = {
         method: 'GET',
-        url: 'http://localhost:3000/api/users/' + signed_in_user_id + '/lists',
+        url: 'http://localhost:3000/api/users/' + currentUser.id + '/lists',
         headers: {
           'username': 'Zachary',
           'password': 'helloworld'
@@ -21,6 +22,7 @@
 
       $http(display_lists).then(function successCallback(response) {
         ApiRequests.lists = response.data;
+        console.log(ApiRequests.lists);
       });
     }
 
@@ -41,19 +43,13 @@
       };
 
       $http(users_request).then(function successCallback(response) {
-        var currentuser = response.data;
-
-        // call setCurrentUser function
-        // ApiRequests.users = response.data;
-        // console.log(ApiRequests.users);
-        // signed_in_user_id = ApiRequests.users.id;
-
-
-        // call setLists
-
+        currentUser = response.data;
+        $cookies.put('blocitoffCurrentUser', currentUser.username,
+        {
+          user_id: currentUser.id
+        });
         setLists()
-
-
+        setCurrentUser();
       });
     };
 
@@ -163,5 +159,5 @@
 
   angular
     .module('blocitoff')
-    .factory('ApiRequests', ['$http', ApiRequests]);
+    .factory('ApiRequests', ['$http', '$cookies', ApiRequests]);
 })();

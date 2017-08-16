@@ -2,7 +2,7 @@
   function HomeCtrl(ApiRequests) {
       this.ApiRequests = ApiRequests;
       // doesnt do anything yet
-      //this.currentUser = BloccitoffCookies.currentUser;
+      this.currentUser = ApiRequests.currentUser;
 
       this.pass_list_id = function(list_id) {
         ApiRequests.task_return(list_id);
