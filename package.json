@@ -13,8 +13,10 @@
   "author": "Bloc Inc",
   "license": "ISC",
   "dependencies": {
+    "angular-font-awesome": "^2.0.3",
     "angular-route": "^1.6.4",
     "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0",
     "hapi": "~7.5.0",
     "jquery": "^3.2.1",
     "path": "^0.4.9"
