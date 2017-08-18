@@ -22,10 +22,13 @@
 
 .save-task {
   width: 25%;
-  padding-bottom: 32px;
+  padding: 17px 0;
+  background: #51e8e0;
+  border: none;
+  border-bottom: 2px initial solid;
 }
 
-input[type=checkbox]:checked + a.navbar-link{
+input[type=checkbox]:checked + a.navbar-link, input[type=checkbox]:checked + div.task{
   text-decoration: line-through;
   font-style: italic;
 }

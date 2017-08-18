@@ -7,9 +7,9 @@
       </div>
     </div>
     <h4 ng-repeat="list in home.ApiRequests.lists" class="task-panel panel-body">
-      <input id="list_checkbox" class="form-check-input" type="checkbox" style="margin-right: 5px;" ng-model="list-checked">
+      <input id="list_checkbox" class="form-check-input" type="checkbox" style="margin-right: 5px;" ng-model="checked">
       <a ui-sref="list" class="navbar-link" ng-click="home.pass_list_id(list.id)">{{ list["name"] }}</a>
-      <i id="delete-icon" class="fa fa-trash" aria-hidden="true" ng-click="home.delete_list(list.id)" style="cursor: pointer;" ng-show="list-checked"></i>
+      <i id="delete-icon" class="fa fa-trash" aria-hidden="true" ng-click="home.delete_list(list.id)" style="cursor: pointer;" ng-show="checked"></i>
     </h4>
   </div>
 </div>
