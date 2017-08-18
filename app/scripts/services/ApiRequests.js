@@ -161,7 +161,7 @@
     ApiRequests.delete_task = function(task_id) {
       task_delete = {
         method: 'DELETE',
-        url: 'http://localhost:3000/api/items/' + list_id,
+        url: 'http://localhost:3000/api/items/' + task_id,
         headers: {
           'username': 'Zachary',
           'password': 'helloworld'
