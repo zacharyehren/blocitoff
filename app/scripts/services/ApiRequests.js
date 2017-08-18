@@ -6,8 +6,8 @@
     var list_id;
     var currentUser;
 
-    function setCurrentUser() {
-      console.log($cookies.get('blocitoffCurrentUser.user_id'));
+    function setCurrentUserId() {
+      $cookies.get('blocitoffUserId');
     }
 
     function setLists(){
@@ -22,7 +22,6 @@
 
       $http(display_lists).then(function successCallback(response) {
         ApiRequests.lists = response.data;
-        console.log(ApiRequests.lists);
       });
     }
 
@@ -44,29 +43,13 @@
 
       $http(users_request).then(function successCallback(response) {
         currentUser = response.data;
-        $cookies.put('blocitoffCurrentUser', currentUser.username,
-        {
-          user_id: currentUser.id
-        });
-        setLists()
-        setCurrentUser();
+        $cookies.put('blocitoffCurrentUsername', currentUser.username);
+        $cookies.put('blocitoffUserId', currentUser.id);
+        setLists();
+        setCurrentUserId();
       });
     };
 
-    // ApiRequests.getListsForUser = function(user) {
-    //   var display_lists = {
-    //     method: 'GET',
-    //     url: 'http://localhost:3000/api/users/' + user.id + '/lists',
-    //     headers: {
-    //       'username': 'Zachary',
-    //       'password': 'helloworld'
-    //     }
-    //   };
-    //
-    //   $http(display_lists).then(function successCallback(response) {
-    //     return response.data;
-    //   });
-    // };
 
     ApiRequests.create_user = function(username, password) {
       var new_user = {
@@ -139,7 +122,6 @@
     };
 
     ApiRequests.task_return = function(list_id) {
-      console.log("fired function");
       var list_tasks = {
       method: 'GET',
       url: 'http://localhost:3000/api/lists/' + list_id + '/items',
