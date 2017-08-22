@@ -1,12 +1,12 @@
 (function() {
-  function HomeCtrl(ApiRequests, $routeParams) {
+  function HomeCtrl(ApiRequests, $cookies) {
       this.ApiRequests = ApiRequests;
-      // doesnt do anything yet
-      //this.currentUser = BloccitoffCookies.currentUser;
+
+      ApiRequests.user_signed_in();
 
       this.pass_list_id = function(list_id) {
-          $routeParams.id = list_id;
-          ApiRequests.task_return(list_id);
+          $cookies.put('blocitoffListId', list_id);
+          ApiRequests.task_return();
       }
 
       this.delete_list = function(list_id) {
@@ -18,5 +18,5 @@
 
   angular
   .module('blocitoff')
-  .controller('HomeCtrl', ['ApiRequests', '$routeParams', HomeCtrl]);
+  .controller('HomeCtrl', ['ApiRequests', '$cookies', HomeCtrl]);
 })();

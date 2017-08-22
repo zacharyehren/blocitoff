@@ -1,3 +1,9 @@
+.blocitoff-header {
+  color: black;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
 .panel-heading {
   background-color: #5ac3ff !important;
 }

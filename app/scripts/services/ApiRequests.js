@@ -1,11 +1,34 @@
 (function() {
-  function ApiRequests($http) {
+  function ApiRequests($http, $cookies) {
 
     var ApiRequests = {};
     var signed_in_user_id;
     var list_id;
     var display_lists;
     var list_tasks;
+    var currentUser;
+
+    function setLists() {
+      var display_lists = {
+        method: 'GET',
+        url: 'http://localhost:3000/api/users/' + $cookies.get('blocitoffUserId') + '/lists',
+        headers: {
+          'username': 'Zachary',
+          'password': 'helloworld'
+        }
+      };
+
+      $http(display_lists).then(function successCallback(response) {
+        ApiRequests.lists = response.data;
+      });
+    }
+
+    ApiRequests.user_signed_in = function() {
+      if ($cookies.get('blocitoffUserId') != undefined) {
+        setLists();
+      }
+    }
+
 
     ApiRequests.sign_in = function(username, password) {
       var users_request = {
@@ -22,38 +45,13 @@
       };
 
       $http(users_request).then(function successCallback(response) {
-        ApiRequests.users = response.data;
-        signed_in_user_id = ApiRequests.users.id;
-
-        display_lists = {
-          method: 'GET',
-          url: 'http://localhost:3000/api/users/' + signed_in_user_id + '/lists',
-          headers: {
-            'username': 'Zachary',
-            'password': 'helloworld'
-          }
-        };
-
-        $http(display_lists).then(function successCallback(response) {
-          ApiRequests.lists = response.data;
-        });
+        currentUser = response.data;
+        $cookies.put('blocitoffCurrentUsername', currentUser.username);
+        $cookies.put('blocitoffUserId', currentUser.id);
+        setLists();
       });
     };
 
-    // ApiRequests.getListsForUser = function(user) {
-    //   var display_lists = {
-    //     method: 'GET',
-    //     url: 'http://localhost:3000/api/users/' + user.id + '/lists',
-    //     headers: {
-    //       'username': 'Zachary',
-    //       'password': 'helloworld'
-    //     }
-    //   };
-    //
-    //   $http(display_lists).then(function successCallback(response) {
-    //     return response.data;
-    //   });
-    // };
 
     ApiRequests.create_user = function(username, password) {
       var new_user = {
@@ -73,18 +71,17 @@
 
 
       $http(new_user).then(function successCallback(response) {
-        ApiRequests.newUser = response.data;
-        signed_in_user_id = ApiRequests.newUser.id;
+        newUser = response.data;
+        $cookies.put('blocitoffCurrentUsername', newUser.username);
+        $cookies.put('blocitoffUserId', newUser.id);
       });
     };
-
-
 
 
     ApiRequests.create_list = function(list_name) {
       var list_request = {
         method: 'POST',
-        url: 'http://localhost:3000/api/users/' + signed_in_user_id + '/lists',
+        url: 'http://localhost:3000/api/users/' + $cookies.get('blocitoffUserId') + '/lists',
         headers: {
           'username': 'Zachary',
           'password': 'helloworld'
@@ -103,11 +100,10 @@
     };
 
 
-
     ApiRequests.create_task = function(task, list_id) {
       var task_request = {
         method: 'POST',
-        url: 'http://localhost:3000/api/lists/' + list_id + '/items',
+        url: 'http://localhost:3000/api/lists/' + $cookies.get('blocitoffListId') + '/items',
         headers: {
           'username': 'Zachary',
           'password': 'helloworld'
@@ -125,26 +121,32 @@
       });
     };
 
-    ApiRequests.task_return = function(list_id) {
+
+    ApiRequests.task_return = function() {
       list_tasks = {
         method: 'GET',
-        url: 'http://localhost:3000/api/lists/' + list_id + '/items',
+        url: 'http://localhost:3000/api/lists/' + $cookies.get('blocitoffListId') + '/items',
         headers: {
           'username': 'Zachary',
           'password': 'helloworld'
         }
       }
-
       $http(list_tasks).then(function successCallback(response) {
         ApiRequests.tasks = response.data;
-
       });
     };
+
+    ApiRequests.list_refresh = function() {
+      if ($cookies.get('blocitoffListId') != undefined) {
+        ApiRequests.task_return();
+      }
+    }
+
 
     ApiRequests.delete_list = function(list_id) {
       list_delete = {
         method: 'DELETE',
-        url: 'http://localhost:3000/api/users/' + signed_in_user_id + '/lists/' + list_id,
+        url: 'http://localhost:3000/api/users/' + $cookies.get('blocitoffUserId') + '/lists/' + list_id,
         headers: {
           'username': 'Zachary',
           'password': 'helloworld'
@@ -152,11 +154,10 @@
       }
 
       $http(list_delete).then(function successCallback(response) {
-        $http(display_lists).then(function successCallback(response) {
-          ApiRequests.lists = response.data;
-        });
+        setLists();
       });
     };
+    
 
     ApiRequests.delete_task = function(task_id) {
       task_delete = {
@@ -175,10 +176,11 @@
       });
     };
 
+
     return ApiRequests;
   };
 
   angular
     .module('blocitoff')
-    .factory('ApiRequests', ['$http', ApiRequests]);
+    .factory('ApiRequests', ['$http', '$cookies', ApiRequests]);
 })();

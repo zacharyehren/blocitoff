@@ -1,23 +1,24 @@
 (function() {
-  function ListCtrl(ApiRequests, $routeParams, $timeout) {
+  function ListCtrl(ApiRequests, $timeout, $cookies) {
 
     this.ApiRequests = ApiRequests;
 
-    this.list_id = $routeParams.id;
+    ApiRequests.list_refresh();
 
     this.delete_task = function(task_id){
     ApiRequests.delete_task(task_id);
   };
 
     this.hide_task = function(task_id){
-      $timeout(function(){
-        ApiRequests.delete_task(task_id)
-      }, 86400);
+      if (task_id != null) {
+        $timeout(function(){
+          ApiRequests.delete_task(task_id)
+        }, 2000);
+      }
     }
 
     this.create_task = function() {
       ApiRequests.create_task(this.task, this.list_id);
-      console.log(ApiRequests.tasks);
       this.task = "";
     };
 
@@ -25,5 +26,5 @@
 
   angular
     .module('blocitoff')
-    .controller('ListCtrl', ['ApiRequests', '$routeParams', '$timeout', ListCtrl]);
+    .controller('ListCtrl', ['ApiRequests', '$timeout', '$cookies', ListCtrl]);
 })();
