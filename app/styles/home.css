@@ -4,6 +4,10 @@
   margin-left: 10px;
 }
 
+.modal-content {
+  padding: 10px;
+}
+
 .sign-out {
   margin-left: 10px;
   cursor: pointer;
