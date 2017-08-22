@@ -12,6 +12,14 @@
       this.delete_list = function(list_id) {
         ApiRequests.delete_list(list_id);
       }
+
+      this.user_sign_out = function() {
+        var cookies = $cookies.getAll();
+        angular.forEach(cookies, function (value, key) {
+          $cookies.remove(key);
+        });
+        location.reload();
+      }
     }
 
 

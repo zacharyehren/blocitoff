@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="/styles/font-awesome/css/font-awesome.css">
   <body>
     <a ui-sref="home" style="text-decoration: none;"><h1 class="blocitoff-header">BLOCITOFF</h1></a>
+    <a ng-controller="HomeCtrl as home" ng-click="home.user_sign_out();" class="sign-out">Sign Out</a>
     <ui-view></ui-view>
     <!-- Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>

@@ -4,6 +4,11 @@
   margin-left: 10px;
 }
 
+.sign-out {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
 .panel-heading {
   background-color: #5ac3ff !important;
 }
