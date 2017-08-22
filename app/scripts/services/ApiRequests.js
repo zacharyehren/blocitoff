@@ -74,6 +74,7 @@
         newUser = response.data;
         $cookies.put('blocitoffCurrentUsername', newUser.username);
         $cookies.put('blocitoffUserId', newUser.id);
+        setLists();
       });
     };
 
@@ -157,7 +158,7 @@
         setLists();
       });
     };
-    
+
 
     ApiRequests.delete_task = function(task_id) {
       task_delete = {
