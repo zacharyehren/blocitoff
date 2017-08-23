@@ -1,7 +1,7 @@
 (function() {
-  function BlocitoffCookies($cookies, $uibModal, ApiRequests) {
+  function BlocitoffCookies($cookies, $uibModal) {
     var currentUsername = $cookies.get('blocitoffCurrentUsername');
-    
+
     if (!currentUsername || currentUsername === '') {
       var usernameModalInstance = $uibModal.open({
         animation: this.animationsEnabled,
@@ -16,5 +16,5 @@
   };
   angular
     .module('blocitoff')
-    .run(['$cookies', '$uibModal', 'ApiRequests', BlocitoffCookies]);
+    .run(['$cookies', '$uibModal', BlocitoffCookies]);
 })();
