@@ -3,8 +3,6 @@
 
     var ListsApiRequests = {};
     var list_id;
-    var display_lists;
-    var list_tasks;
     var currentUser;
 
     function setLists() {
@@ -21,6 +19,7 @@
         ListsApiRequests.lists = response.data;
       });
     }
+    
 
     ListsApiRequests.user_signed_in = function() {
       if ($cookies.get('blocitoffUserId') != undefined) {
@@ -68,7 +67,6 @@
         }
       };
 
-
       $http(new_user).then(function successCallback(response) {
         newUser = response.data;
         $cookies.put('blocitoffCurrentUsername', newUser.username);
@@ -92,6 +90,7 @@
           }
         }
       };
+
       $http(list_request).then(function successCallback(response) {
         new_list = response.data;
         list_id = new_list.id;
