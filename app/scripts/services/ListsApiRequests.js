@@ -19,7 +19,7 @@
         ListsApiRequests.lists = response.data;
       });
     }
-    
+
 
     ListsApiRequests.user_signed_in = function() {
       if ($cookies.get('blocitoffUserId') != undefined) {

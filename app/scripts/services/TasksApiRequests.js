@@ -18,13 +18,15 @@
       });
     };
 
+
     TasksApiRequests.list_refresh = function() {
       if ($cookies.get('blocitoffListId') != undefined) {
         TasksApiRequests.task_return();
       }
     }
 
-    TasksApiRequests.create_task = function(task, list_id) {
+
+    TasksApiRequests.create_task = function(task) {
       var task_request = {
         method: 'POST',
         url: 'http://localhost:3000/api/lists/' + $cookies.get('blocitoffListId') + '/items',
@@ -46,9 +48,6 @@
     };
 
 
-
-
-
     TasksApiRequests.delete_task = function(task_id) {
       task_delete = {
         method: 'DELETE',
@@ -65,7 +64,6 @@
         });
       });
     };
-
 
     return TasksApiRequests;
   };

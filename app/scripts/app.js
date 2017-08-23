@@ -1,5 +1,5 @@
 (function() {
-  function config($locationProvider, $stateProvider, $routeProvider) {
+  function config($locationProvider, $stateProvider) {
     $locationProvider
       .html5Mode({
         enabled: true,
@@ -21,11 +21,6 @@
         url: '/list',
         controller: 'ListCtrl as list',
         templateUrl: '/templates/list.html'
-      });
-
-    $routeProvider
-      .when('/lists/:id', {
-        controller: 'ListCtrl as list'
       });
 
   }

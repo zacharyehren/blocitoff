@@ -10,7 +10,7 @@
   };
 
     this.create_task = function() {
-      TasksApiRequests.create_task(this.task, this.list_id);
+      TasksApiRequests.create_task(this.task);
       this.task = "";
     };
 
