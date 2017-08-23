@@ -18,6 +18,9 @@
         }
       };
 
+
+
+
       $http(display_lists).then(function successCallback(response) {
         ApiRequests.lists = response.data;
       });
