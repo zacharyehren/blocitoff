@@ -1,16 +1,15 @@
 (function() {
-  function HomeCtrl(ApiRequests, $cookies) {
-      this.ApiRequests = ApiRequests;
+  function HomeCtrl(ListsApiRequests, $cookies, UsersApiRequests) {
+      UsersApiRequests.user_signed_in();
 
-      ApiRequests.user_signed_in();
+      this.ListsApiRequests = ListsApiRequests;
 
       this.pass_list_id = function(list_id) {
           $cookies.put('blocitoffListId', list_id);
-          ApiRequests.task_return();
       }
 
       this.delete_list = function(list_id) {
-        ApiRequests.delete_list(list_id);
+        ListsApiRequests.delete_list(list_id);
       }
 
       this.user_sign_out = function() {
@@ -26,5 +25,5 @@
 
   angular
   .module('blocitoff')
-  .controller('HomeCtrl', ['ApiRequests', '$cookies', HomeCtrl]);
+  .controller('HomeCtrl', ['ListsApiRequests', '$cookies', 'UsersApiRequests', HomeCtrl]);
 })();

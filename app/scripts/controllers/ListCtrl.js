@@ -1,16 +1,16 @@
 (function() {
-  function ListCtrl(ApiRequests, $cookies) {
+  function ListCtrl(TasksApiRequests, $cookies) {
 
-    this.ApiRequests = ApiRequests;
+    this.TasksApiRequests = TasksApiRequests;
 
-    ApiRequests.list_refresh();
+    TasksApiRequests.list_refresh();
 
     this.delete_task = function(task_id){
-    ApiRequests.delete_task(task_id);
+    TasksApiRequests.delete_task(task_id);
   };
 
     this.create_task = function() {
-      ApiRequests.create_task(this.task, this.list_id);
+      TasksApiRequests.create_task(this.task);
       this.task = "";
     };
 
@@ -18,5 +18,5 @@
 
   angular
     .module('blocitoff')
-    .controller('ListCtrl', ['ApiRequests', '$cookies', ListCtrl]);
+    .controller('ListCtrl', ['TasksApiRequests', '$cookies', ListCtrl]);
 })();

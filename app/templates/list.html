@@ -7,7 +7,7 @@
       <button class="pull-right save-task" ng-click="list.create_task()">Save</button>
     </form>
 
-    <div class="panel-body task-panel" ng-repeat="task in list.ApiRequests.tasks">
+    <div class="panel-body task-panel" ng-repeat="task in list.TasksApiRequests.tasks">
       <input id="task_checkbox" class="form-check-input" type="checkbox" style="margin-right: 10px; float: left;" ng-model="checked" ng-change="list.hide_task(task.id)">
       <div class="task">
         {{ task.item }}

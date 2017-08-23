@@ -1,5 +1,5 @@
 (function(){
-  function UsernameModalInstanceCtrl($uibModalInstance, ApiRequests) {
+  function UsernameModalInstanceCtrl($uibModalInstance, UsersApiRequests) {
 
     this.showSignIn = function() {
       document.getElementById('signIn').style.display = "block";
@@ -10,7 +10,7 @@
       if (this.username === undefined) {
         alert("You didn't enter a username!");
       } else {
-          ApiRequests.create_user(this.username, this.password);
+          UsersApiRequests.create_user(this.username, this.password);
           $uibModalInstance.close(this.username);
 
       }
@@ -20,12 +20,12 @@
       if (this.username === undefined) {
         alert("You didn't enter a username!");
       } else {
-          ApiRequests.sign_in(this.username, this.password);
+          UsersApiRequests.sign_in(this.username, this.password);
           $uibModalInstance.close();
       }
     };
   }
   angular
     .module('blocitoff')
-    .controller('UsernameModalInstanceCtrl', ['$uibModalInstance', 'ApiRequests', UsernameModalInstanceCtrl])
+    .controller('UsernameModalInstanceCtrl', ['$uibModalInstance', 'UsersApiRequests', UsernameModalInstanceCtrl])
 })();
