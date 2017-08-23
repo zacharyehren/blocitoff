@@ -1,5 +1,5 @@
 (function(){
-  function ListModalCtrl(ApiRequests, $uibModal) {
+  function ListModalCtrl(ListsApiRequests, $uibModal) {
 
     this.openModal = function() {
       var modalInstance = $uibModal.open({
@@ -11,12 +11,12 @@
 
       modalInstance.result.then(
         function(list_name) {
-          ApiRequests.create_list(list_name);
+          ListsApiRequests.create_list(list_name);
         }
       )
     };
   }
   angular
     .module('blocitoff')
-    .controller('ListModalCtrl', ['ApiRequests', '$uibModal', ListModalCtrl]);
+    .controller('ListModalCtrl', ['ListsApiRequests', '$uibModal', ListModalCtrl]);
 })();

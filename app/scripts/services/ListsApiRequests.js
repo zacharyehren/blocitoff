@@ -1,7 +1,7 @@
 (function() {
   function ListsApiRequests($http, $cookies) {
 
-    var ApiRequests = {};
+    var ListsApiRequests = {};
     var list_id;
     var display_lists;
     var list_tasks;
@@ -18,18 +18,18 @@
       };
 
       $http(display_lists).then(function successCallback(response) {
-        ApiRequests.lists = response.data;
+        ListsApiRequests.lists = response.data;
       });
     }
 
-    ApiRequests.user_signed_in = function() {
+    ListsApiRequests.user_signed_in = function() {
       if ($cookies.get('blocitoffUserId') != undefined) {
         setLists();
       }
     }
 
 
-    ApiRequests.sign_in = function(username, password) {
+    ListsApiRequests.sign_in = function(username, password) {
       var users_request = {
         method: 'POST',
         url: 'http://localhost:3000/api/users/authenticate',
@@ -52,7 +52,7 @@
     };
 
 
-    ApiRequests.create_user = function(username, password) {
+    ListsApiRequests.create_user = function(username, password) {
       var new_user = {
         method: 'POST',
         url: 'http://localhost:3000/api/users/',
@@ -78,7 +78,7 @@
     };
 
 
-    ApiRequests.create_list = function(list_name) {
+    ListsApiRequests.create_list = function(list_name) {
       var list_request = {
         method: 'POST',
         url: 'http://localhost:3000/api/users/' + $cookies.get('blocitoffUserId') + '/lists',
@@ -95,12 +95,12 @@
       $http(list_request).then(function successCallback(response) {
         new_list = response.data;
         list_id = new_list.id;
-        ApiRequests.lists.push(new_list);
+        setLists();
       });
     };
 
 
-    ApiRequests.delete_list = function(list_id) {
+    ListsApiRequests.delete_list = function(list_id) {
       list_delete = {
         method: 'DELETE',
         url: 'http://localhost:3000/api/users/' + $cookies.get('blocitoffUserId') + '/lists/' + list_id,
@@ -115,7 +115,7 @@
       });
     };
 
-    return ApiRequests;
+    return ListsApiRequests;
   };
 
   angular
