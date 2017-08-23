@@ -1,8 +1,8 @@
 (function() {
-  function HomeCtrl(ListsApiRequests, $cookies) {
-      this.ListsApiRequests = ListsApiRequests;
+  function HomeCtrl(ListsApiRequests, $cookies, UsersApiRequests) {
+      UsersApiRequests.user_signed_in();
 
-      ListsApiRequests.user_signed_in();
+      this.ListsApiRequests = ListsApiRequests;
 
       this.pass_list_id = function(list_id) {
           $cookies.put('blocitoffListId', list_id);
@@ -25,5 +25,5 @@
 
   angular
   .module('blocitoff')
-  .controller('HomeCtrl', ['ListsApiRequests', '$cookies', HomeCtrl]);
+  .controller('HomeCtrl', ['ListsApiRequests', '$cookies', 'UsersApiRequests', HomeCtrl]);
 })();
