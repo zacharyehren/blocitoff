@@ -1,12 +1,11 @@
 (function() {
   function HomeCtrl(ListsApiRequests, $cookies) {
-      this.ApiRequests = ListsApiRequests;
+      this.ListsApiRequests = ListsApiRequests;
 
       ListsApiRequests.user_signed_in();
 
       this.pass_list_id = function(list_id) {
           $cookies.put('blocitoffListId', list_id);
-          ListsApiRequests.task_return();
       }
 
       this.delete_list = function(list_id) {
