@@ -1,4 +1,12 @@
 (function() {
+  // Default environment variables
+   var __env = {};
+
+   // Import variables if present
+   if(window){
+     Object.assign(__env, window.__env);
+   }
+
   function config($locationProvider, $stateProvider, $routeProvider) {
      $locationProvider
          .html5Mode({
@@ -28,7 +36,8 @@
           controller: 'ListCtrl as list'
         });
 
-
+        ngModule.constant('__env', __env);
+        
    }
 
   angular
